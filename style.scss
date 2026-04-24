@@ -1,35 +1,46 @@
+@use "mobile.scss";
+
 * {
     padding: 0%;
     margin: 0%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family:
+        "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+        Arial, sans-serif;
 }
 
 body {
-    background-color: #FFCAB1;
+    background-color: #ffcab1;
 }
 
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 50px;
+    font-size: 40px;
     margin: 0px 10vh;
+    @include mobile.phone_display{
+            font-size: 30px;
+            margin: 0px 3vw;
+            img {
+                height: 50px;
+                width: 50px;
+            }
+        }
 }
 
 .quiz {
     display: flex;
     flex-direction: column;
-    margin: 20px 20vh;
-
+    margin: 5px 10vh;
     img {
-        width: 400px;
-        height: 400px;
+        width: 450px;
+        height: 450px;
         margin: 30px;
     }
     &_box {
         border-radius: 30px;
         background-color: rgba(256, 0, 0, 0.1);
-        padding: 10px;
+        padding: 5px;
     }
     &_question {
         display: flex;
@@ -47,6 +58,14 @@ body {
         font-size: 30px;
         margin: 10px;
     }
+
+    @include mobile.phone_display {
+        margin: 0px;
+        img {
+            width: 250px;
+            height: 250px;
+        }
+    }
 }
 
 .proceed {
@@ -54,14 +73,23 @@ body {
     align-items: center;
     flex-direction: column;
     font-size: 1.8rem;
-    &_timer{
+    @include mobile.phone_display{
+            font-size: 1.2rem;
+        }
+    &_timer {
         padding: 10px;
         margin: 15px;
+        @include mobile.phone_display{
+            margin: 5px;
+        }
     }
-    &_nextQ{
-        background-color: #A2E3C450;
+    &_nextQ {
+        background-color: #a2e3c450;
         padding: 5px;
         border-radius: 20px;
         font-size: 1.5rem;
+        @include mobile.phone_display{
+            font-size: 1rem;
+        }
     }
 }
