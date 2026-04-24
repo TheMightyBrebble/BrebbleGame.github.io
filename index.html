@@ -1,0 +1,69 @@
+<!-- figure out what game to make
+Make as much psuedocode for game
+do basic html/scss for the game
+
+if believed finished, do challenges 1-5 -->
+
+<!-- Making quiz game 
+https://js-quiz-git-master-jakealistairwood.vercel.app/
+good example of a basic way to make the game 
+
+html:
+make layout for the page
+allow an image to be shown along with the question
+make 4 buttons that will whole each answer
+
+css:
+make sure that the page looks functional before JS starts interacting
+
+js:
+
+
+-->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header class="navbar">
+            <!-- Include reset button and also show score 
+         Potentially can include a timer here-->
+            <a href="index.html">
+                <img src="homeIcon.png" alt="Reset Quiz" />
+            </a>
+
+            <!-- eventually will turn into changable elements -->
+            <div class="navbar_score">0/0</div>
+        </header>
+
+        <main class="quiz">
+            <!-- include question(include photo, 4 answers etc) -->
+            <div class="quiz_box">
+                <div class="quiz_question">
+                    <!-- image+text will need to be updated with each question -->
+                    <img src="" alt="Question Image" />
+                    <h2>What is the capital city of Japan?</h2>
+                </div>
+                <div class="quiz_answers">
+                    <button>Answer A</button>
+                    <button>Answer B</button>
+                    <button>Tokyo</button>
+                    <button>Answer D</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="proceed">
+            <!-- include a link to the next question, 
+         can also put timer here -->
+         <button>Next Question</button>
+        </footer>
+
+        <script src="index.js"></script>
+    </body>
+</html>
