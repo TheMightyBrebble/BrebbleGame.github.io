@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0%;
     margin: 0%;
 }
@@ -15,25 +15,42 @@ body {
     margin: 0px 10vh;
 }
 
-.quiz{
+.quiz {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 20px 20vh;
-    &_box{
+
+    img {
+        width: 400px;
+        height: 400px;
+        margin: 30px;
+    }
+    &_box {
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 10px;
         border: 1px solid red;
     }
-    &_question{
+    &_question {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
         border: 1px solid black;
+        margin: 20px;
     }
-    &_answers{
+    &_answers {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         border: 1px solid gold;
+    }
+    &_answer {
+        font-size: 30px;
+        margin: 10px;
     }
 }
 
 .proceed {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

@@ -18,22 +18,38 @@ body {
 .quiz {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 20px 20vh;
 }
+.quiz img {
+  width: 400px;
+  height: 400px;
+  margin: 30px;
+}
 .quiz_box {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
   border: 1px solid red;
 }
 .quiz_question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
   border: 1px solid black;
+  margin: 20px;
 }
 .quiz_answers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   border: 1px solid gold;
 }
+.quiz_answer {
+  font-size: 30px;
+  margin: 10px;
+}
 
 .proceed {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

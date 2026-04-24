@@ -46,14 +46,14 @@ js:
             <div class="quiz_box">
                 <div class="quiz_question">
                     <!-- image+text will need to be updated with each question -->
-                    <img src="" alt="Question Image" />
+                    <img src="question1.png" alt="Question Image" />
                     <h2>What is the capital city of Japan?</h2>
                 </div>
                 <div class="quiz_answers">
-                    <button>Answer A</button>
-                    <button>Answer B</button>
-                    <button>Tokyo</button>
-                    <button>Answer D</button>
+                    <button class="quiz_answer">Answer A</button>
+                    <button class="quiz_answer">Answer B</button>
+                    <button class="quiz_answer">Tokyo</button>
+                    <button class="quiz_answer">Answer D</button>
                 </div>
             </div>
         </main>
@@ -61,7 +61,8 @@ js:
         <footer class="proceed">
             <!-- include a link to the next question, 
          can also put timer here -->
-         <button>Next Question</button>
+         <span class="timer">15 seconds left</span> 
+         <button class="nextQ">Next Question</button>
         </footer>
 
         <script src="index.js"></script>
