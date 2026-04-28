@@ -58,6 +58,9 @@ body {
         font-size: 30px;
         margin: 10px;
     }
+    &_answer:hover {
+        background-color: rgba(256, 256, 256, 0.6);
+    }
 
     @include mobile.phone_display {
         margin: 0px;
