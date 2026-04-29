@@ -3,7 +3,7 @@
 //That way we can compare correctAnswer and each answer to see which is correct. Means that when a button is pressed, the innerText can be compared to the question
 const question1 = {
     question: "What is the capital city of Japan?",
-    question_img: `<img id="quiz_question-img" src="icons/homeIcon.png" alt="Question Image" />`,
+    question_img: "icons/question1.png",
     answer1: "Osaka",
     answer2: "Kyoto",
     answer3: "Tokyo",
@@ -11,20 +11,23 @@ const question1 = {
     correctAnswer: "Tokyo",
 };
 const question2 = {
-    question: "",
-    question_img: "",
-    answer1: "",
-    answer2: "",
-    answer3: "",
-    answer4: "",
+    question:
+        "What type of energy drink was a sponsor in the game Death Stranding?",
+    question_img: "icons/heres-your-drink-norman-reedus.gif",
+    answer1: "Red Bull",
+    answer2: "Monster Energy",
+    answer3: "Lucozade",
+    answer4: "Rockstar",
+    correctAnswer: "Monster Energy",
 };
 const question3 = {
-    question: "",
-    question_img: "",
-    answer1: "",
-    answer2: "",
-    answer3: "",
-    answer4: "",
+    question: "What was the pirate name for Edward Teach?",
+    question_img: "icons/EdwardTeach.png",
+    answer1: "The Gentleman Pirate",
+    answer2: "Black Bart",
+    answer3: "Captain Kidd",
+    answer4: "Blackbeard",
+    correctAnswer: "Blackbeard",
 };
 const question4 = {
     question: "",
@@ -33,6 +36,7 @@ const question4 = {
     answer2: "",
     answer3: "",
     answer4: "",
+    correctAnswer: "",
 };
 const question5 = {
     question: "",
@@ -41,11 +45,14 @@ const question5 = {
     answer2: "",
     answer3: "",
     answer4: "",
+    correctAnswer: "",
 };
 
 let questionNumber = 1;
+let answerGiven = false;
+let question = question1;
 const questionText = document.querySelector("#quiz_question-text");
-const questionImg = document.querySelector("#quiz_question-img");
+const questionImage = document.querySelector("#quiz_question-img");
 const answer1 = document.querySelector("#quiz_answer1");
 const answer2 = document.querySelector("#quiz_answer2");
 const answer3 = document.querySelector("#quiz_answer3");
@@ -56,72 +63,124 @@ const timer = document.querySelector("#proceed_time");
 const nextQuest = document.querySelector("#proceed_nextQ");
 
 questionText.innerText = question1.question;
+questionImage.src = question1.question_img;
 answer1.innerText = question1.answer1;
 answer2.innerText = question1.answer2;
 answer3.innerText = question1.answer3;
 answer4.innerText = question1.answer4;
 
-// CODE TO CHANGE IMAGE WITH EACH QUESTION
-// NEEDS TO BE ADDED TO NEXTQ BUTTON WHEN SOLVED
-
-// const newImg = document.createElement("img");
-// const newQuestionImage = document.createTextNode(
-//     `<img id="quiz_question-img" src="icons/homeIcon.png" alt="Question Image" />`,
-// );
-// newImg.appendChild(newQuestionImage);
-// questionImg.appendChild(newImg);
-// questionImg.innerHTML = question1.question_img;
-
 //Countdown Timer for game - only works using function keyword
 var timeLeft = 20;
 var timerId = setInterval(countdown, 1000);
 function countdown() {
-    if (timeLeft == -1) {
+    if (timeLeft == -1 ) {
         //INSERT CODE TO MAKE SCREEN CHANGE
+       if (answerGiven == false) timer.innerText = "You ran out of time.";
         totalScore.innerHTML = questionNumber;
+        answerGiven = true;
     } else {
-        timer.innerText = timeLeft;
+        timer.innerText = `${timeLeft} seconds left`;
         timeLeft--;
     }
 }
 
+//Buttons for each question to check if the score should be upped
+answer1.addEventListener("click", (event) => {
+    if (answerGiven === false) {
+        if (answer1.innerHTML === question.correctAnswer) {
+            userScore.innerHTML++;
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = `You got it correct!`;
+            timeLeft = -1;
+            //Can change background
+        } else {
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = "You got it incorrect.";
+            timeLeft = -1;
+        }
+    }
+    answerGiven = true;
+});
+answer2.addEventListener("click", (event) => {
+    if (answerGiven === false) {
+        if (answer2.innerHTML === question.correctAnswer) {
+            userScore.innerHTML++;
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = `You got it correct!`;
+            timeLeft = -1;
+            //Can change background
+        } else {
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = "You got it incorrect.";
+            timeLeft = -1;
+        }
+    }
+    answerGiven = true;
+});
+answer3.addEventListener("click", (event) => {
+    if (answerGiven === false) {
+        if (answer3.innerHTML === question.correctAnswer) {
+            userScore.innerHTML++;
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = `You got it correct!`;
+            timeLeft = -1;
+            //Can change background
+        } else {
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = "You got it incorrect.";
+            timeLeft = -1;
+        }
+    }
+    answerGiven = true;
+});
+answer4.addEventListener("click", (event) => {
+    if (answerGiven === false) {
+        if (answer4.innerHTML === question.correctAnswer) {
+            userScore.innerHTML++;
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = `You got it correct!`;
+            timeLeft = -1;
+            //Can change background
+        } else {
+            totalScore.innerHTML = questionNumber;
+            timer.innerText = "You got it incorrect.";
+            timeLeft = -1;
+        }
+    }
+    answerGiven = true;
+});
+
 //Next Question button to go to the next question using Switch/Case
 nextQuest.addEventListener("click", (event) => {
-    
     timeLeft = 20;
+    answerGiven = false;
     if (questionNumber <= 5) {
-        
+        totalScore.innerHTML = questionNumber;
         questionNumber++;
     }
-    console.log(questionNumber);
     switch (questionNumber) {
         case 2:
-            questionText.innerText = question2.question;
-            answer1.innerText = question2.answer1;
-            answer2.innerText = question2.answer2;
-            answer3.innerText = question2.answer3;
-            answer4.innerText = question2.answer4;
+            questionAdjustment(question2);
             break;
         case 3:
-            questionText.innerText = question3.question;
-            answer1.innerText = question3.answer1;
-            answer2.innerText = question3.answer2;
-            answer3.innerText = question3.answer3;
-            answer4.innerText = question3.answer4;
+            questionAdjustment(question3);
             break;
         case 4:
-            questionText.innerText = question4.question;
-            answer1.innerText = question4.answer1;
-            answer2.innerText = question4.answer2;
-            answer3.innerText = question4.answer3;
-            answer4.innerText = question4.answer4;
+            questionAdjustment(question4);
             break;
         case 5:
-            questionText.innerText = question5.question;
-            answer1.innerText = question5.answer1;
-            answer2.innerText = question5.answer2;
-            answer3.innerText = question5.answer3;
-            answer4.innerText = question5.answer4;
-            break;      
+            questionAdjustment(question5);
+            break;
     }
 });
+
+//make function for adding each question's text to the question box
+const questionAdjustment = (questionNum) => {
+    questionText.innerText = questionNum.question;
+    answer1.innerText = questionNum.answer1;
+    answer2.innerText = questionNum.answer2;
+    answer3.innerText = questionNum.answer3;
+    answer4.innerText = questionNum.answer4;
+    questionImage.src = questionNum.question_img;
+    question = questionNum;
+};

@@ -32,8 +32,8 @@ body {
   margin: 5px 10vh;
 }
 .quiz img {
-  width: 450px;
-  height: 450px;
+  width: 400px;
+  height: 400px;
   margin: 30px;
 }
 .quiz_box {
@@ -67,6 +67,9 @@ body {
   .quiz img {
     width: 250px;
     height: 250px;
+  }
+  .quiz_answer {
+    font-size: 20px;
   }
 }
 
