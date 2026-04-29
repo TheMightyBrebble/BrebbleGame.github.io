@@ -73,9 +73,11 @@ answer4.innerText = question1.answer4;
 var timeLeft = 20;
 var timerId = setInterval(countdown, 1000);
 function countdown() {
-    if (timeLeft == -1 ) {
-        //INSERT CODE TO MAKE SCREEN CHANGE
-       if (answerGiven == false) timer.innerText = "You ran out of time.";
+    if (timeLeft == -1) {
+        if (answerGiven == false) {
+            timer.innerText = "You ran out of time.";
+            document.body.style.backgroundColor = "#eb6534";
+        }
         totalScore.innerHTML = questionNumber;
         answerGiven = true;
     } else {
@@ -92,7 +94,6 @@ answer1.addEventListener("click", (event) => {
             totalScore.innerHTML = questionNumber;
             timer.innerText = `You got it correct!`;
             timeLeft = -1;
-            //Can change background
         } else {
             totalScore.innerHTML = questionNumber;
             timer.innerText = "You got it incorrect.";
@@ -108,7 +109,6 @@ answer2.addEventListener("click", (event) => {
             totalScore.innerHTML = questionNumber;
             timer.innerText = `You got it correct!`;
             timeLeft = -1;
-            //Can change background
         } else {
             totalScore.innerHTML = questionNumber;
             timer.innerText = "You got it incorrect.";
@@ -124,7 +124,6 @@ answer3.addEventListener("click", (event) => {
             totalScore.innerHTML = questionNumber;
             timer.innerText = `You got it correct!`;
             timeLeft = -1;
-            //Can change background
         } else {
             totalScore.innerHTML = questionNumber;
             timer.innerText = "You got it incorrect.";
@@ -140,7 +139,6 @@ answer4.addEventListener("click", (event) => {
             totalScore.innerHTML = questionNumber;
             timer.innerText = `You got it correct!`;
             timeLeft = -1;
-            //Can change background
         } else {
             totalScore.innerHTML = questionNumber;
             timer.innerText = "You got it incorrect.";
@@ -154,6 +152,7 @@ answer4.addEventListener("click", (event) => {
 nextQuest.addEventListener("click", (event) => {
     timeLeft = 20;
     answerGiven = false;
+    document.body.style.backgroundColor = "#ffcab1";
     if (questionNumber <= 5) {
         totalScore.innerHTML = questionNumber;
         questionNumber++;
