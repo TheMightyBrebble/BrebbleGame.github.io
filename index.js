@@ -30,22 +30,22 @@ const question3 = {
     correctAnswer: "Blackbeard",
 };
 const question4 = {
-    question: "",
-    question_img: "",
-    answer1: "",
-    answer2: "",
-    answer3: "",
-    answer4: "",
-    correctAnswer: "",
+    question: "When did the first Superman comic release?",
+    question_img: "icons/Superman.png",
+    answer1: "June 1938",
+    answer2: "July 1938",
+    answer3: "August 1938",
+    answer4: "April 1939",
+    correctAnswer: "June 1938",
 };
 const question5 = {
-    question: "",
-    question_img: "",
-    answer1: "",
-    answer2: "",
-    answer3: "",
-    answer4: "",
-    correctAnswer: "",
+    question: "When was the global release date for the PS5?",
+    question_img: "icons/PS5.png",
+    answer1: "Oct 29, 2020",
+    answer2: "Nov 12, 2020",
+    answer3: "Nov 19, 2020",
+    answer4: "Dec 10, 2020",
+    correctAnswer: "Nov 19, 2020",
 };
 
 let questionNumber = 1;
@@ -74,6 +74,7 @@ var timeLeft = 20;
 var timerId = setInterval(countdown, 1000);
 function countdown() {
     if (timeLeft == -1) {
+       
         if (answerGiven == false) {
             timer.innerText = "You ran out of time.";
             document.body.style.backgroundColor = "#eb6534";
@@ -99,6 +100,9 @@ answer1.addEventListener("click", (event) => {
             timer.innerText = "You got it incorrect.";
             timeLeft = -1;
         }
+         if (questionNumber === 5) {
+             clearTimeout(timerId);
+         }
     }
     answerGiven = true;
 });
@@ -114,6 +118,9 @@ answer2.addEventListener("click", (event) => {
             timer.innerText = "You got it incorrect.";
             timeLeft = -1;
         }
+         if (questionNumber === 5) {
+             clearTimeout(timerId);
+         }
     }
     answerGiven = true;
 });
@@ -129,6 +136,9 @@ answer3.addEventListener("click", (event) => {
             timer.innerText = "You got it incorrect.";
             timeLeft = -1;
         }
+         if (questionNumber === 5) {
+             clearTimeout(timerId);
+         }
     }
     answerGiven = true;
 });
@@ -144,19 +154,32 @@ answer4.addEventListener("click", (event) => {
             timer.innerText = "You got it incorrect.";
             timeLeft = -1;
         }
+        if (questionNumber === 5) {
+            clearTimeout(timerId);
+        }
     }
     answerGiven = true;
 });
 
 //Next Question button to go to the next question using Switch/Case
 nextQuest.addEventListener("click", (event) => {
-    timeLeft = 20;
-    answerGiven = false;
+    
     document.body.style.backgroundColor = "#ffcab1";
     if (questionNumber <= 5) {
+        timeLeft = 20;
         totalScore.innerHTML = questionNumber;
         questionNumber++;
+        answerGiven = false;
+        if(questionNumber === 5){
+             nextQuest.innerHTML = "Final Score";     
+        }
+        if(questionNumber > 5){
+            clearTimeout(timerId);
+            timer.innerText = userScore.innerHTML + "/" + totalScore.innerHTML;
+            timer.style.fontsize = "x-large";
+        }
     }
+    
     switch (questionNumber) {
         case 2:
             questionAdjustment(question2);
