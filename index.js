@@ -58,6 +58,7 @@ const answer4 = document.querySelector("#quiz_answer4");
 const userScore = document.querySelector("#user_score");
 const totalScore = document.querySelector("#total_score");
 const timer = document.querySelector("#proceed_time");
+const timerBox = document.querySelector(".proceed_timer")
 const nextQuest = document.querySelector("#proceed_nextQ");
 
 let questionNumber = 1;
@@ -126,9 +127,14 @@ nextQuest.addEventListener("click", (event) => {
         }
         if (questionNumber > 5) {
             clearTimeout(timerId);
-            timer.innerText = userScore.innerHTML + "/" + totalScore.innerHTML;
+            timer.innerText = "Your final score is: " + userScore.innerHTML + "/" + totalScore.innerHTML;
+            const newElement = document.createElement("p");
+            const textNode = document.createTextNode("The button in the top left will reset the game");
+            newElement.appendChild(textNode);
+            timerBox.appendChild(newElement);
             timer.style.fontsize = "x-large";
             nextQuest.innerHTML = "The Game Is Over";
+            //Potentially add another line about the home button resetting the game
         }
     }
 
