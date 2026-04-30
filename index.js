@@ -48,9 +48,7 @@ const question5 = {
     correctAnswer: "Nov 19, 2020",
 };
 
-let questionNumber = 1;
-let answerGiven = false;
-let question = question1;
+//Necessary variables for the game to run
 const questionText = document.querySelector("#quiz_question-text");
 const questionImage = document.querySelector("#quiz_question-img");
 const answer1 = document.querySelector("#quiz_answer1");
@@ -62,6 +60,9 @@ const totalScore = document.querySelector("#total_score");
 const timer = document.querySelector("#proceed_time");
 const nextQuest = document.querySelector("#proceed_nextQ");
 
+let questionNumber = 1;
+let answerGiven = false;
+let question = question1;
 questionText.innerText = question1.question;
 questionImage.src = question1.question_img;
 answer1.innerText = question1.answer1;
@@ -74,7 +75,6 @@ var timeLeft = 20;
 var timerId = setInterval(countdown, 1000);
 function countdown() {
     if (timeLeft == -1) {
-       
         if (answerGiven == false) {
             timer.innerText = "You ran out of time.";
             document.body.style.backgroundColor = "#eb6534";
@@ -90,96 +90,48 @@ function countdown() {
 //Buttons for each question to check if the score should be upped
 answer1.addEventListener("click", (event) => {
     if (answerGiven === false) {
-        if (answer1.innerHTML === question.correctAnswer) {
-            userScore.innerHTML++;
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = `You got it correct!`;
-            timeLeft = -1;
-        } else {
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = "You got it incorrect.";
-            timeLeft = -1;
-        }
-         if (questionNumber === 5) {
-             clearTimeout(timerId);
-         }
+        correctAnswer(answer1);
     }
     answerGiven = true;
 });
 answer2.addEventListener("click", (event) => {
     if (answerGiven === false) {
-        if (answer2.innerHTML === question.correctAnswer) {
-            userScore.innerHTML++;
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = `You got it correct!`;
-            timeLeft = -1;
-        } else {
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = "You got it incorrect.";
-            timeLeft = -1;
-        }
-         if (questionNumber === 5) {
-             clearTimeout(timerId);
-         }
+        correctAnswer(answer2);
     }
     answerGiven = true;
 });
 answer3.addEventListener("click", (event) => {
     if (answerGiven === false) {
-        if (answer3.innerHTML === question.correctAnswer) {
-            userScore.innerHTML++;
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = `You got it correct!`;
-            timeLeft = -1;
-        } else {
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = "You got it incorrect.";
-            timeLeft = -1;
-        }
-         if (questionNumber === 5) {
-             clearTimeout(timerId);
-         }
+        correctAnswer(answer3);
     }
     answerGiven = true;
 });
 answer4.addEventListener("click", (event) => {
     if (answerGiven === false) {
-        if (answer4.innerHTML === question.correctAnswer) {
-            userScore.innerHTML++;
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = `You got it correct!`;
-            timeLeft = -1;
-        } else {
-            totalScore.innerHTML = questionNumber;
-            timer.innerText = "You got it incorrect.";
-            timeLeft = -1;
-        }
-        if (questionNumber === 5) {
-            clearTimeout(timerId);
-        }
+        correctAnswer(answer4);
     }
     answerGiven = true;
 });
 
 //Next Question button to go to the next question using Switch/Case
 nextQuest.addEventListener("click", (event) => {
-    
     document.body.style.backgroundColor = "#ffcab1";
     if (questionNumber <= 5) {
         timeLeft = 20;
         totalScore.innerHTML = questionNumber;
         questionNumber++;
         answerGiven = false;
-        if(questionNumber === 5){
-             nextQuest.innerHTML = "Final Score";     
+        if (questionNumber === 5) {
+            nextQuest.innerHTML = "Final Score";
         }
-        if(questionNumber > 5){
+        if (questionNumber > 5) {
             clearTimeout(timerId);
             timer.innerText = userScore.innerHTML + "/" + totalScore.innerHTML;
             timer.style.fontsize = "x-large";
+            nextQuest.innerHTML = "The Game Is Over";
         }
     }
-    
+
     switch (questionNumber) {
         case 2:
             questionAdjustment(question2);
@@ -196,7 +148,7 @@ nextQuest.addEventListener("click", (event) => {
     }
 });
 
-//make function for adding each question's text to the question box
+//function for adding each question's text to the question box
 const questionAdjustment = (questionNum) => {
     questionText.innerText = questionNum.question;
     answer1.innerText = questionNum.answer1;
@@ -205,4 +157,21 @@ const questionAdjustment = (questionNum) => {
     answer4.innerText = questionNum.answer4;
     questionImage.src = questionNum.question_img;
     question = questionNum;
+};
+
+//function to assess whether the answer is the same as the question's answer
+const correctAnswer = (answer) => {
+    if (answer.innerHTML === question.correctAnswer) {
+        userScore.innerHTML++;
+        totalScore.innerHTML = questionNumber;
+        timer.innerText = `You got it correct!`;
+        timeLeft = -1;
+    } else {
+        totalScore.innerHTML = questionNumber;
+        timer.innerText = "You got it incorrect.";
+        timeLeft = -1;
+    }
+    if (questionNumber === 5) {
+        clearTimeout(timerId);
+    }
 };
