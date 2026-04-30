@@ -1,7 +1,7 @@
 //Question Objects
 //Each object contains the question, the image for the question, 4 answers and then one of the answers printed as correctAnswer
 //That way we can compare correctAnswer and each answer to see which is correct. Means that when a button is pressed, the innerText can be compared to the question
-//Javascript is also designed in a way that adding another question to the array and updating the switch/case also means
+//Javascript is also designed in a way that adding another question to the array means
 //the quiz can technically go infinite if chosen to.
 const questions = [
     {
