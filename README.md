@@ -60,4 +60,4 @@ good example of a basic way to make the game
         - [x] all answers must be changed
 - [x] At end of quiz (potentially)
     - [x] display user_score and total_score as a pop up in fron of the quiz
-    - [ ] show home to reset quiz with the score
+    - [x] show home to reset quiz with the score
