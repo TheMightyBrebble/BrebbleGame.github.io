@@ -1,6 +1,8 @@
 //Question Objects
 //Each object contains the question, the image for the question, 4 answers and then one of the answers printed as correctAnswer
 //That way we can compare correctAnswer and each answer to see which is correct. Means that when a button is pressed, the innerText can be compared to the question
+//Javascript is also designed in a way that adding another question and updating the switch/case also means
+//the quiz can technically go infinite.
 const question1 = {
     question: "What is the capital city of Japan?",
     question_img: "icons/question1.png",
@@ -61,6 +63,7 @@ const timer = document.querySelector("#proceed_time");
 const timerBox = document.querySelector(".proceed_timer")
 const nextQuest = document.querySelector("#proceed_nextQ");
 
+const amountOfTime = 20;
 let questionNumber = 1;
 let answerGiven = false;
 let question = question1;
@@ -72,8 +75,8 @@ answer3.innerText = question1.answer3;
 answer4.innerText = question1.answer4;
 
 //Countdown Timer for game - only works using function keyword
-var timeLeft = 20;
-var timerId = setInterval(countdown, 1000);
+let timeLeft = amountOfTime;
+let timerId = setInterval(countdown, 1000);
 function countdown() {
     if (timeLeft == -1) {
         if (answerGiven == false) {
@@ -88,7 +91,7 @@ function countdown() {
     }
 }
 
-//Buttons for each question to check if the score should be upped
+//Buttons for each question's answers to check if the score should be upped
 answer1.addEventListener("click", (event) => {
     if (answerGiven === false) {
         correctAnswer(answer1);
@@ -118,7 +121,7 @@ answer4.addEventListener("click", (event) => {
 nextQuest.addEventListener("click", (event) => {
     document.body.style.backgroundColor = "#ffcab1";
     if (questionNumber <= 5) {
-        timeLeft = 20;
+        timeLeft = amountOfTime;
         totalScore.innerHTML = questionNumber;
         questionNumber++;
         answerGiven = false;

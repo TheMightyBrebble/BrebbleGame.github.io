@@ -13,9 +13,8 @@
                 <img src="icons/resetIcon.png" alt="Reset Quiz" />
             </a>
 
-            <!-- eventually will turn into changable elements -->
-             <!-- will have to decide between having the total score
-              increase with each question or having a hard number -->
+            <!-- Navbar has user_score and total_score to allow the javascript to update
+             each according to whether the question is right or wrong -->
             <div id="navbar_score">
                 <span id="user_score">0</span>
                 /
@@ -26,7 +25,7 @@
         <main class="quiz">
             <div class="quiz_box">
                 <div class="quiz_question">
-                    <!-- Javascript automatically updates image, text and correct answer for the question when next question is pressed -->
+                    <!-- Javascript automatically updates image, text and correct answer for the question box when next question is pressed -->
                     <img id="quiz_question-img" src="icons/question1.png" alt="Question Image" />
                     <h2 id="quiz_question-text">What is the capital city of Japan?</h2>
                 </div>
