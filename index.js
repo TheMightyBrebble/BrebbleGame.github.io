@@ -122,7 +122,11 @@ answer4.addEventListener("click", (event) => {
 //Next Question button to go to the next question using Switch/Case
 nextQuest.addEventListener("click", (event) => {
     document.body.style.backgroundColor = "#ffcab1";
-    if (questionNumber < questions.length){
+    answer1.style.backgroundColor = "rgba(256, 256, 256, 0.3)";
+    answer2.style.backgroundColor = "rgba(256, 256, 256, 0.3)";
+    answer3.style.backgroundColor = "rgba(256, 256, 256, 0.3)";
+    answer4.style.backgroundColor = "rgba(256, 256, 256, 0.3)";
+    if (questionNumber < questions.length) {
         questionAdjustment(questions[questionNumber]);
     }
     if (questionNumber <= questions.length) {
@@ -170,10 +174,12 @@ const correctAnswer = (answer) => {
         userScore.innerHTML++;
         totalScore.innerHTML = questionNumber;
         timer.innerText = `You got it correct!`;
+        answer.style.backgroundColor = "#45cf45"
         timeLeft = -1;
     } else {
         totalScore.innerHTML = questionNumber;
         timer.innerText = "You got it incorrect.";
+        answer.style.backgroundColor = "#ff2e2e"
         timeLeft = -1;
     }
     if (questionNumber === 5) {
